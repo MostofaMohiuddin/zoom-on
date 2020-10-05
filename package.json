@@ -1,0 +1,17 @@
+{
+  "name": "zoom-on",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "find-process": "^1.4.3",
+    "open": "^7.2.0",
+    "opn": "^6.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
