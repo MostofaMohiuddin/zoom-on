@@ -1,4 +1,4 @@
 @ECHO OFF
-start node --no-warnings app.js wed.txt
+start node --no-warnings app.js routine.txt
 
 

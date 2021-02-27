@@ -1,7 +1,7 @@
 const { exit } = require("process");
 const { default: formatDate } = require("./formatDate");
 
-function displayClass(classDetails, indexOfcomingClass) {
+function displayClass(classDetails, indexOfcomingClass, isTodayClass) {
   if (classDetails.length == 0 || indexOfcomingClass > 1) return;
   for (let index = 0; index < classDetails.length; index++) {
     console.log(
@@ -14,14 +14,28 @@ function displayClass(classDetails, indexOfcomingClass) {
         " sir"
     );
   }
-  var secondsRemain = Math.round(
-    Math.abs(
-      new Date() -
-        new Date(
-          formatDate(new Date()) + " " + classDetails[indexOfcomingClass].time
-        )
-    ) / 1000
-  );
+  var secondsRemain;
+  if (isTodayClass)
+    secondsRemain = Math.round(
+      Math.abs(
+        new Date() -
+          new Date(
+            formatDate(new Date()) + " " + classDetails[indexOfcomingClass].time
+          )
+      ) / 1000
+    );
+  else {
+    var tomorrow = new Date();
+    tomorrow.setDate(new Date().getDate() + 1);
+    secondsRemain = Math.round(
+      Math.abs(
+        new Date() -
+          new Date(
+            formatDate(tomorrow) + " " + classDetails[indexOfcomingClass].time
+          )
+      ) / 1000
+    );
+  }
   var h = Math.floor(secondsRemain / 3600);
   var m = Math.floor((secondsRemain % 3600) / 60);
   var s = Math.floor((secondsRemain % 3600) % 60);
